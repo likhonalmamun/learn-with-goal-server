@@ -8,11 +8,12 @@ const allSubject = require("./subjects.json");
 app.get("/", (req, res) => {
   res.send(JSON.stringify(allSubject));
 });
-app.get("/data", (req, res) => {
-  res.json("this is the data sent from the server");
+app.get("/:id", (req, res) => {
+  const subjectId = req.params.id;
+  const subject = allSubject.find((sub) => subjectId === sub.id);
+  res.send(subject);
 });
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
-console.log(allSubject);
