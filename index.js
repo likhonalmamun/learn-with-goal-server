@@ -13,6 +13,11 @@ app.get("/:id", (req, res) => {
   const subject = allSubject.find((sub) => subjectId === sub.id);
   res.send(subject);
 });
+app.get("/checkout/:id", (req, res) => {
+  const SubjectId = req.params.id;
+  const Subject = allSubject.find((Sub) => SubjectId === Sub.id);
+  res.send(Subject);
+});
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
